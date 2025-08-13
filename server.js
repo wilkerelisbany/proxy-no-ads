@@ -5,20 +5,25 @@ const cheerio = require("cheerio");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.get("/player", async (req, res) => {
-  const videoUrl = req.query.url;
-  const videoId = req.query.id;
+// Página de prueba para verificar que el servidor está activo
+app.get("/", (req, res) => {
+  res.send("<h2>Proxy No Ads activo ✅</h2><p>Usa /player?id=VIDEO_ID o /player?url=URL_COMPLETA</p>");
+});
 
-  // Validar parámetros
-  if (!videoUrl && !videoId) {
-    return res.status(400).send("Debes indicar ?url= o ?id=");
+app.get("/player", async (req, res) => {
+  const videoId = req.query.id;
+  const videoUrl = req.query.url;
+
+  if (!videoId && !videoUrl) {
+    return res.status(400).send("Debes indicar ?id= o ?url=");
   }
 
-  // Construir target
   const target = videoUrl || `https://hlswish.com/e/${videoId}`;
 
   try {
-    const response = await axios.get(target, { headers: { "User-Agent": "Mozilla/5.0" } });
+    const response = await axios.get(target, {
+      headers: { "User-Agent": "Mozilla/5.0" },
+    });
 
     const $ = cheerio.load(response.data);
 
