@@ -1,14 +1,14 @@
 {
-  "name": "player-proxy",
+A  "name": "proxy-no-ads",
   "version": "1.0.0",
-  "description": "Servidor proxy para reproducir contenido sin bloqueos",
+  "description": "Proxy para quitar anuncios de videos",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "cors": "^2.8.5",
-    "node-fetch": "^3.3.2"
+    "axios": "^1.6.7",
+    "cheerio": "^1.0.0-rc.12",
+    "express": "^4.19.2"
   }
 }
