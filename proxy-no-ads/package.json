@@ -1,5 +1,5 @@
 {
-A  "name": "proxy-no-ads",
+ "name": "proxy-no-ads",
   "version": "1.0.0",
   "description": "Proxy para quitar anuncios de videos",
   "main": "server.js",
